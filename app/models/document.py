@@ -1,6 +1,6 @@
 from pydantic import BaseModel, Field
 from typing import List, Optional, Dict, Any
-from datetime import datetime
+from datetime import datetime, timezone
 from enum import Enum
 
 class DocumentFormat(str, Enum):
@@ -22,7 +22,7 @@ class ParsedDocument(BaseModel):
     word_count: int
     sections: List[ContentBlock]
     metadata: Dict[str, Any] = Field(default_factory=dict)
-    processed_at: datetime = Field(default_factory=datetime.utcnow)
+    processed_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
 
 class ConversionRequest(BaseModel):
     raw_content: str

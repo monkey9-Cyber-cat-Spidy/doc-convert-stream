@@ -15,7 +15,7 @@ def test_xml_parsing_structure():
     """
     parsed = MarkupParser.parse_markup(sample_xml, DocumentFormat.XML)
     assert parsed.title == "Engineering Specifications"
-    assert len(parsed.sections) == 4
+    assert len(parsed.sections) == 5
     assert parsed.sections[0].block_type == "heading"
     assert parsed.sections[0].level == 1
     assert parsed.sections[1].block_type == "paragraph"
